@@ -1,33 +1,33 @@
 const initialState ={ 
-  list: []};
-const todoReducer = (state = initialState,action) => {
-switch(action.type){
-case "ADD_TODO":
-  const{id,data} = action.payLoad;
-  return{
-     ...state,
-     list:[ 
-    // ...state gets the previous state  and ...state.list adds new data to the todolist
-    ...state.list,
-    {
-      id:id,
-      data:data
+  list: JSON.parse(localStorage.getItem('lists')) || []
+};
+
+const todoReducer = (state = initialState, action) => {
+  switch(action.type){
+    case "ADD_TODO":
+      const { id, data } = action.payload;
+      const newList = [...state.list, { id, data }];
+      localStorage.setItem('lists', JSON.stringify(newList));
+      return {
+        ...state,
+        list: newList
+      };
+    case "DELETE_TODO":
+      const updatedList = state.list.filter((elem) => elem.id !== action.id);
+      localStorage.setItem('lists', JSON.stringify(updatedList));
+      return {
+        ...state,
+        list: updatedList
+      };
+    case "REMOVE_TODO":
+      localStorage.removeItem('lists');
+      return {
+        ...state,
+        list: []
+      };
+    default:
+      return state; 
   }
-]
-}
-case "DELETE_TODO":
-const newList = state.list.filter((elem) => elem.id !== action.id) // we are using Filter method to match the selected id == action id if its not matching it returns
-return{
-     ...state,//previous list
-     list:newList // current list after deleting
-}
-case "REMOVE_TODO":
-  return{
-    ...state,
-    list: []
-  }
-default: return state; 
-}
-}
- 
+};
+
 export default todoReducer;
