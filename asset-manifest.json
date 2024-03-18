@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/repository-Todolist/static/css/main.bd7c24a6.css",
+    "main.js": "/repository-Todolist/static/js/main.5d743aa4.js",
+    "static/js/453.95183433.chunk.js": "/repository-Todolist/static/js/453.95183433.chunk.js",
+    "static/media/Hamed.jpeg": "/repository-Todolist/static/media/Hamed.349b69262860f49798e6.jpeg",
+    "index.html": "/repository-Todolist/index.html",
+    "main.bd7c24a6.css.map": "/repository-Todolist/static/css/main.bd7c24a6.css.map",
+    "main.5d743aa4.js.map": "/repository-Todolist/static/js/main.5d743aa4.js.map",
+    "453.95183433.chunk.js.map": "/repository-Todolist/static/js/453.95183433.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bd7c24a6.css",
+    "static/js/main.5d743aa4.js"
+  ]
+}
