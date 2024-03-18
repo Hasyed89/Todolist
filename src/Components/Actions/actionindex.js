@@ -1,7 +1,7 @@
 export const addTodo = (data)=>{
 return{ 
   type:"ADD_TODO",
-  payLoad:{// here payLoad hold the data of id and data in the form of object
+  payLoad:{
     id: new Date().getTime().toString(),
     data:data
   }
