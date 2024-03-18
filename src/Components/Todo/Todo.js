@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo, deleteTodo, removeTodo } from "../Actions/actionindex";
+import { addTodo, deleteTodo, removeTodo,updateTodo } from "../Actions/actionindex";
 import { nanoid } from "nanoid";
 import "../Todo.css";
 
@@ -27,7 +27,12 @@ const Todo = () => {
   const handleRemoveAll = () => {
     dispatch(removeTodo());
   };
-
+  const handleEditTodo = (id) => {
+    const newData = prompt('Enter new todo text:');
+    if (newData !== null && newData.trim() !== '') {
+      dispatch(updateTodo(id, newData));
+    }
+  };
   return (
     <div className="main-div">
       <div className="child-div">
@@ -51,16 +56,17 @@ const Todo = () => {
                 className="far fa-trash-alt add-btn"
                 onClick={() => handleDeleteTodo(elem.id)}
               ></i>
+              <i className="far fa-edit add-btn" onClick={() => handleEditTodo(elem.id)}></i>
+
             </div>
           ))}
         </div>
         <div className="showItems">
           <button
-            className="btn effect04"
-            data-sm-link-text="remove All"
+      
             onClick={handleRemoveAll}
           >
-            <span>Check List</span>
+            <span>Remove All</span>
           </button>
         </div>
       </div>

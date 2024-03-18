@@ -18,3 +18,7 @@ export const deleteTodo = (id)=>{
       type:"REMOVE_TODO"
     }
     }
+    export const updateTodo = (id, newData) => ({
+      type: 'UPDATE_TODO',
+      payload: { id, newData }
+    });

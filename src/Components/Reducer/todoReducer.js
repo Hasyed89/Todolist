@@ -13,17 +13,27 @@ const todoReducer = (state = initialState, action) => {
         list: newList
       };
     case "DELETE_TODO":
-      const updatedList = state.list.filter((elem) => elem.id !== action.id);
-      localStorage.setItem('lists', JSON.stringify(updatedList));
+      const updatedListDelete = state.list.filter((elem) => elem.id !== action.id);
+      localStorage.setItem('lists', JSON.stringify(updatedListDelete));
       return {
         ...state,
-        list: updatedList
+        list: updatedListDelete
       };
     case "REMOVE_TODO":
       localStorage.removeItem('lists');
       return {
         ...state,
         list: []
+      };
+    case "UPDATE_TODO":
+      const { id: updateId, newData } = action.payload; 
+      const updatedListUpdate = state.list.map(todo =>
+        todo.id === updateId ? { ...todo, data: newData } : todo
+      );
+      localStorage.setItem('lists', JSON.stringify(updatedListUpdate));
+      return {
+        ...state,
+        list: updatedListUpdate
       };
     default:
       return state; 
