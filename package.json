@@ -1,6 +1,6 @@
 {
-  "name": "redux-todo",
   "homepage": "https://Hasyed89.github.io/repository-Todolist",
+  "name": "redux-todo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
