@@ -81,13 +81,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { addTodo, deleteTodo, removeTodo, updateTodo } from "../Actions/actionindex";
 import { nanoid } from "nanoid";
 import "../Todo.css";
-import { useNavigate } from "react-router";
-import { Link } from "react-router-dom";
+
 const Todo = () => {
   const [inputData, setInputData] = useState("");
   const tasks = useSelector((state) => state.todoReducer.tasks);
   const dispatch = useDispatch();
-const nav = useNavigate();
+
   const handleAddTodo = () => {
     if (inputData.trim() !== "") {
       const newTask = {
@@ -113,10 +112,6 @@ const nav = useNavigate();
       dispatch(updateTodo(id, newData));
     }
   };
-  const handleTaskClick =(taskID,event)=>{
-    event.stopPropagation();
-    nav(`/project/${taskID}`);
-    } 
 
   return (
     <div className="main-div">
@@ -133,14 +128,10 @@ const nav = useNavigate();
           />
           <i className="fa fa-plus add-btn" onClick={handleAddTodo}></i>
         </div>
-     
-
-        <div className="showItems" >
+        <div className="showItems">
           {tasks.map((task) => (
-            <div className="eachItem" key={task.id}
-            //  onClick={(e)=>handleTaskClick(task.id,e)}
-            >
-             <Link to ={`/project/${task.id}`}><h3 >{task.data}</h3>  </Link> 
+            <div className="eachItem" key={task.id}>
+              <h3>{task.data}</h3> 
               <i
                 className="far fa-trash-alt add-btn"
                 onClick={() => handleDeleteTodo(task.id)}
